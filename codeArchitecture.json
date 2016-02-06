@@ -1,0 +1,20 @@
+{
+  "callback":{
+    "C++?":{
+      "audio":{
+        "num_of_frames":{
+          "instruct_me":"mas simple y consistente con APIS actuales",
+          "max_or_min_num_of_frames":"",
+          "frame_count_min":"existe porque algunos backends soportan control directo sobre el buffer, and for these backends, you might choose to not write all the frames you could because maybe your input buffer is not quite ready. Instead of writing silence and having an underrun happen you could just wait some time for the input buffer to fill and then continue on.",
+          "read_write_callback":"en casos con la salida basada en la entrada, como por ej una reverb, se debe garantizar que el callback de escritura solo llegue despues del callback de lectura, entonces para cada callback de escritura debe haber un callback de lectura,no todos los sound drivers garantizanesto, requier",
+          "origin":"ian@ianesten.com",
+          "subject":"Announcement: libsoundio 1.0.0 released",
+          "list":"music-dsp"
+        }
+      }
+    },
+    "node":{
+      "def":"hace algo cuando terminó de hacer algo"
+      }
+  }
+}
