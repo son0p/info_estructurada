@@ -1,20 +1,54 @@
 {
-  "callback":{
-    "C++?":{
-      "audio":{
-        "num_of_frames":{
-          "instruct_me":"mas simple y consistente con APIS actuales",
-          "max_or_min_num_of_frames":"",
-          "frame_count_min":"existe porque algunos backends soportan control directo sobre el buffer, and for these backends, you might choose to not write all the frames you could because maybe your input buffer is not quite ready. Instead of writing silence and having an underrun happen you could just wait some time for the input buffer to fill and then continue on.",
-          "read_write_callback":"en casos con la salida basada en la entrada, como por ej una reverb, se debe garantizar que el callback de escritura solo llegue despues del callback de lectura, entonces para cada callback de escritura debe haber un callback de lectura,no todos los sound drivers garantizanesto, requier",
-          "origin":"ian@ianesten.com",
-          "subject":"Announcement: libsoundio 1.0.0 released",
-          "list":"music-dsp"
+  "math": {
+    "aritmetica": "operaciones con numeros reales\n",
+    "calculo": "técnica para calcular cantidades infinitesimales, funciones etc"
+  },
+  "callback": {
+    "C++?": {
+      "audio": {
+        "num_of_frames": {
+          "instruct_me": "mas simple y consistente con APIS actuales",
+          "max_or_min_num_of_frames": "",
+          "frame_count_min": "existe porque algunos backends soportan control directo sobre el buffer, and for these backends, you might choose to not write all the frames you could because maybe your input buffer is not quite ready. Instead of writing silence and having an underrun happen you could just wait some time for the input buffer to fill and then continue on.",
+          "read_write_callback": "en casos con la salida basada en la entrada, como por ej una reverb, se debe garantizar que el callback de escritura solo llegue despues del callback de lectura, entonces para cada callback de escritura debe haber un callback de lectura,no todos los sound drivers garantizanesto, requier",
+          "origin": "ian@ianesten.com",
+          "subject": "Announcement: libsoundio 1.0.0 released",
+          "list": "music-dsp"
         }
       }
     },
-    "node":{
-      "def":"hace algo cuando terminó de hacer algo"
+    "node": {
+      "def": "hace algo cuando terminó de hacer algo"
+    }
+  },
+  "constructor": "cada instancia de la clase que cualidades va a tener, cuando alguien cree esta instancia humano, siempre que llame humano voy a exigir el nombre, puedo tener varios constructores para una misma clase, cuando instancio dejo el espacio del nombre.",
+  "destructor": "llama todos los miembros de clase que los ha usado y limpia toda la ram de los que la ha usado",
+  "dsp": {
+    "distortion": {
+      "high_input": {
+        "text": "For high-bandwidth input or high-gain clipping, you'll need to run the nonlinear operator at substantially elevated sample rates unless you want synthesised harmonic content to alias audibly.  I'm fine with 4x oversampling for electric guitar at 48k but going higher can still improve things depending on circumstances.Also, it's not a bad idea to put a (preferably configurable) pair ofhigh- and lowpass filters both before and after a strong nonlinearity.Asymmetric clipping gives rise to a DC component which most sane people agree needs to be filtered out.  Too much bass going in makes a clipper sound farty, and lowpass filters taking some edge off pre- and post-distortion are highly useful for musical purposes. And welcome to the list,Tim",
+        "author": "tim@quitte.de",
+        "subject": "[LAD] Hi, I'm new"
       }
+    },
+    "window": "Se puede diseñar un filtro del tamaño de la hanning window, un filtro pasa banda.",
+    "impulse_response": {
+      "link": "http://dsp.stackexchange.com/questions/13883/convert-frequency-response-to-impulse-response",
+      "": ""
+    },
+    "fft": {
+      "finding_spectrum": {
+        "Soesilo Wijono": {
+          "response": "We can convert time domain to frequency domain by using Fast Fourier Transform, that's to calculate the discrete fourier transformation. http://chuck.cs.princeton.edu/doc/language/uana.html\n\nThis is the basic of finding the spectrum of an input signal, in this case I use a sinusoidal signal as example. This will display frequencies and power (in polar form of the complex number) at the FFT bin indices.",
+          "code": "https://gist.github.com/son0p/0fce9ae0ecb3dcfebce5"
+        }
+      },
+      "find_highest_magnitude_of_power": {
+        "Soesilo Wijono": {
+          "code": "https://gist.github.com/son0p/73b4b520a16189454d73",
+          "notes": "I've not tried it yet for adc, but I think it would be the same, that's to replace SinOsc with adc, and removing the line with frequency setting.\nChanged,\n\nadc => FFT fft => blackhole;\n\nRemoved,\n\n5500 => g.freq;\n\n\nWhen applying adc as input, make sure that we remove (too high) DC component.\nAlso make sure to filter out all frequency components above Nyquist frequency (= sampling rate / 2).\nI think this can be applied by using BPF (band pass filter) http://chuck.cs.princeton.edu/doc/program/ugen_full.html#BPF  when needed.\n\nExample, for audible sound [20Hz .. 20kHz], the sampling rate according to Nyquist criterion should be at least (2 x 20kHz) = 40kHz. Hence we must filter the input in the bandwidth of [20..20k] Hz, by using BPF (either by hardware or software).\nIn the example codes above, the sampling rate is 44.1kHz\n\nRegards,\n/sw\n\nEdit: for adc, we need also to change the FFT size as desired, e.g. to 1024 or 2048, the higher the size we get more smooth samples in frequency domain.\nAlso the duration,\n\nfft.size()::samp => now;\n\nneed to be changed to cover the input signal duration."
+        }
+      }
+    }
   }
 }

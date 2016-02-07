@@ -1,0 +1,42 @@
+{
+  "agitacion": {
+    "fills": {
+      "easy_lover": {
+        "tags": "pasa_compas",
+        "link": ""
+      }
+    },
+    "cortes": {
+      "corte_sobre_melodia": "marcha eslava (tchaikovsky)"
+    }
+  },
+  "altura": {
+    "transformacion_emotiva": {
+      "mina dracula": {
+        "author": "wojciech kilar",
+        "transformacion": "de suspenso a romance"
+      }
+    },
+    "nostalgia": {
+      "hilo": {
+        "vocalize": {
+          "author": "wojciech kilar"
+        },
+        "Swan_Lake_Suite": {
+          "author": "tchaikovsky"
+        }
+      }
+    },
+    "pop_corn": {
+      "link": "",
+      "tags": "corto, modulacion, misterio"
+    },
+    "bolero_de_ravel": {
+      "tags": "largo, creciente, oriente",
+      "link": ""
+    },
+    "marcha_eslava": {
+      "tags": "aire, mediana, oriente, elaboracion, creciente, espiral, cortes"
+    }
+  }
+}
